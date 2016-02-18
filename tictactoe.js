@@ -27,6 +27,7 @@ $(document).ready(function() {
   function addCol(row) {
     for (var i = 1; i <= number; i++){
       var newCol = document.createElement('td');
+      newCol.id = "r" + number + "col" + i;
       row.appendChild(newCol);
     }
   }
