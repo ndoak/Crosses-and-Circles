@@ -1,0 +1,10 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+td {
+border: 2px solid red;
+padding: 50px;
+}
