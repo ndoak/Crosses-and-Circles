@@ -18,7 +18,9 @@ $(document).ready(function() {
   function addRow() {
     var table = document.getElementById('table');
     var newRow = table.insertRow();
+    newRow.id = "row" + number;
     addCol(newRow);
+
 
   }
 
