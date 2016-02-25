@@ -18,23 +18,32 @@ $(document).ready(function() {
   function addRow() {
     var table = document.getElementById('table');
     var newRow = table.insertRow();
+
     newRow.id = "row" + number;
-    addCol(newRow);
-
-
+    addCols(newRow);
+    for (var i = 1; i < number; i++){
+      var tr = document.getElementById('row' + i);
+      addTd(number,i,tr)
+    }
   }
 
-  function addCol(row) {
+  function addCols(row) {
     for (var i = 1; i <= number; i++){
-      var newCol = document.createElement('td');
-      newCol.id = "r" + number + "col" + i;
-      row.appendChild(newCol);
+      addTd(i,number,row);
     }
+  }
+
+  function addTd(columnnumber,rownumber,row) {
+    var newCol = document.createElement('td');
+    newCol.id = "r" + rownumber + "col" + columnnumber;
+    row.appendChild(newCol);
+
   }
 
   $('button.in').on('click', function() {
     number++;
     addRow();
+  });
 
     // var newDiv = document.createElement('td');
     // var startRow = document.getElementById('row1');
@@ -45,20 +54,13 @@ $(document).ready(function() {
     //     newDiv.id = "r" + r + "col" + c;
     //  }
     // }
-  });
-
   //       for (var y =0; y <= 10; i--){
   //     }
   //
   //     $('button .de').on('click', function() {
   //
   //     })
-
-
-
     function checkWinner() {
-
-
 
       for (var i = 0; i < wins.length; i++) {
         var w = wins[i];
