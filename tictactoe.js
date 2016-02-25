@@ -5,26 +5,12 @@ $(document).ready(function() {
   var wins = [['#r1col1', '#r2col2', '#r3col3'], ['#r1col3', '#r2col2', '#r3col1'], ['#r1col1', '#r2col2', '#r3col3'],
   ['#r1col1', '#r2col1', '#r3col1'],['#r1col2', '#r2col2', '#r3col2'],['#r1col3','#r2col3','#r3col3']];
 
-  $('td').one('click', function() {
-    if (turn % 2 === 0) {
-      $(this).html('O');
-    } else {
-    $(this).html('X');
-  }
-    turn++;
-    checkWinner();
-  });
-
   function addRow() {
     var table = document.getElementById('table');
     var newRow = table.insertRow();
 
     newRow.id = "row" + number;
     addCols(newRow);
-    for (var i = 1; i < number; i++){
-      var tr = document.getElementById('row' + i);
-      addTd(number,i,tr)
-    }
   }
 
   function addCols(row) {
@@ -37,13 +23,28 @@ $(document).ready(function() {
     var newCol = document.createElement('td');
     newCol.id = "r" + rownumber + "col" + columnnumber;
     row.appendChild(newCol);
-
   }
 
   $('button.in').on('click', function() {
+    destroyBoard();
     number++;
-    addRow();
+    for (var i = 0; i < number; i++){
+      addRow();
+    }
+    $('td').one('click', function() {
+      if (turn % 2 === 0) {
+        $(this).html('O');
+      } else {
+      $(this).html('X');
+    }
+      turn++;
+      checkWinner();
+    });
   });
+
+  function destroyBoard(){
+    $('tr').remove();
+  }
 
     // var newDiv = document.createElement('td');
     // var startRow = document.getElementById('row1');
